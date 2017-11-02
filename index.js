@@ -9,7 +9,7 @@ var url = require('url');
 
 function sha1(filePath) {
 	return crypto.createHash('md5')
-		.update(fs.readFileSync(filePath))
+		.update(new Date(s).getTime().toString())
 		.digest('hex').slice(-7);
 }
 
@@ -34,7 +34,7 @@ module.exports = function (options) {
 
 	md5BuildAsset = options.md5BuildAsset;
 
-	reg = new RegExp('["\'\\(]\\s*([\\w\\_\/\\.\\-]*\\.(' + (options.exts ? options.exts.join('|') : 'jpg|jpeg|png|gif|cur|js|css') + '))([^\\)"\']*)\\s*[\\)"\']', 'gim');
+	reg = new RegExp('["\'\\(]\\s*([\\w\\_\/\\.\\-]*\\.(' + (options.exts ? options.exts.join('|') : 'jpg|jpeg|png|svg|gif|cur|js|css') + '))([^\\)"\']*)\\s*[\\)"\']', 'gim');
 
 	return through.obj(function (file, enc, callback) {
 		if (file.isNull()) {
