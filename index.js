@@ -9,7 +9,7 @@ var url = require('url');
 
 function sha1(filePath) {
 	return crypto.createHash('md5')
-		.update(new Date(s).getTime().toString())
+		.update(new Date().getTime().toString())
 		.digest('hex').slice(-7);
 }
 
@@ -57,6 +57,8 @@ module.exports = function (options) {
 			} else {
 				fullPath = path.resolve(mainPath, filePath);
 			}
+					console.log(fullPath);
+					console.log(fs.existsSync(fullPath));
 
 			if (fs.existsSync(fullPath)) {
 				if (md5BuildAsset) {
