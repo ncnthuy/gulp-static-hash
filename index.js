@@ -57,8 +57,6 @@ module.exports = function (options) {
 			} else {
 				fullPath = path.resolve(mainPath, filePath);
 			}
-					console.log(fullPath);
-					console.log(fs.existsSync(fullPath));
 
 			if (fs.existsSync(fullPath)) {
 				if (md5BuildAsset) {
